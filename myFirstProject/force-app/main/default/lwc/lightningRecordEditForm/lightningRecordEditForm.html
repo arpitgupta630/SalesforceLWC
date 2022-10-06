@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-card slds-var-p-around_medium">
+        <span title="Account LREF" class="slds-card__header-title">Account LREF</span>
+        <lightning-record-edit-form object-api-name="Account" record-id={recordId}>
+            <div class="slds-grid slds-wrap">
+                <lightning-input-field field-name="Name" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_x-large slds-var-p-vertical_x-small acc-field"></lightning-input-field>
+    
+                <lightning-input-field field-name="NumberOfEmployees" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_x-large slds-var-p-vertical_x-small acc-field"></lightning-input-field>
+    
+                <lightning-input-field field-name="AnnualRevenue" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_x-large slds-var-p-vertical_x-small acc-field"></lightning-input-field>
+    
+                <lightning-input-field field-name="Rating" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_x-large slds-var-p-vertical_x-small acc-field"></lightning-input-field>
+
+                <div class="slds-col slds-size_12-of-12 slds-var-p-around_medium slds-align_absolute-center">
+                    <lightning-button variant="brand" type="submit" label="Save" class="slds-var-p-horizontal_x-small"></lightning-button>
+                    <lightning-button label="Reset" class="slds-var-p-horizontal_x-small" onclick={resetValue}></lightning-button>
+                    <lightning-button type="reset" label="Clear" class="slds-var-p-horizontal_x-small"></lightning-button> 
+                </div>
+            </div>
+        </lightning-record-edit-form>
+    </div> 
+</template>

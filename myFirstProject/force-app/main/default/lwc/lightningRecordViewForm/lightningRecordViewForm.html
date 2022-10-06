@@ -1,0 +1,16 @@
+<template>
+    <div class="slds-card slds-var-p-around_medium">
+        <span title="Account LRVF" class="slds-card__header-title">Account LRVF</span>
+        <lightning-record-view-form object-api-name="Account" record-id={recordId}>
+            <div class="slds-grid slds-wrap">
+                <lightning-output-field field-name="Name" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small"></lightning-output-field>
+    
+                <lightning-output-field field-name="NumberOfEmployees" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small"></lightning-output-field>
+    
+                <lightning-output-field field-name="AnnualRevenue" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small"></lightning-output-field>
+    
+                <lightning-output-field field-name="Rating" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small"></lightning-output-field>
+            </div>
+        </lightning-record-view-form>
+    </div>
+</template>
