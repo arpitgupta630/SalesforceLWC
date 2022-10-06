@@ -1,0 +1,14 @@
+<template>
+   
+    <c-get-student-by-email-child onsenddata={reciveData}></c-get-student-by-email-child>
+    <div if:true={flag}>
+        <lightning-card  variant="Narrow"  title={studentName} icon-name="standard:contact">
+            <div class="slds-var-p-horizontal_small">
+                <p><strong>Student Name:</strong> {studentName}</p>
+                <p><strong>Student Email:</strong> {studentEmail}</p>
+                <p><strong>Course Opted:</strong> {courseOpted}</p>
+            </div>
+        </lightning-card>
+    </div>
+            
+</template>

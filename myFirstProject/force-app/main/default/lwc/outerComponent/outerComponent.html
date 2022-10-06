@@ -1,0 +1,24 @@
+<template>
+
+    <div class="slds-card slds-var-p-around_medium">
+        <span title="Create an Account" class="slds-card__header-title">Create an Account</span>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small">
+                <lightning-input type="text" label="Account Name" data-id="acc-name" placeholder="Enter Name of Account"></lightning-input>
+            </div>
+            <div class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small">
+                <lightning-input type="text" label="Number of Employee" data-id="acc-noe" placeholder="Enter Number of Employees"></lightning-input>
+            </div>
+            <div class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small">
+                <lightning-input type="text" label="Annual Revenue" data-id="acc-revenue" placeholder="Enter Annual Revenue"></lightning-input>
+            </div>
+            <div class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small">
+                <lightning-input type="text" label="Rating" data-id="acc-rating" placeholder="Enter Rating"></lightning-input>
+            </div>
+            <div class="slds-col slds-size_12-of-12 slds-var-p-around_medium slds-align_absolute-center">
+                <lightning-button variant="brand" label="Submit" title="Primary action" onclick={createAcc} class="slds-var-m-right_x-small btn"></lightning-button>                
+            </div>
+        </div>
+        <c-inner-component></c-inner-component>
+    </div>   
+</template>

@@ -1,0 +1,11 @@
+<template>
+    <div class="slds-var-p-around_medium lgc-bg">
+        <lightning-input type="text" label="Current Speed" class="speed" value="0"></lightning-input>
+    </div>
+    <lightning-button variant="brand" label="Get Speed" title="Primary action" onclick={showResult} class="slds-var-m-right_x-small btn"></lightning-button>
+    <template if:true={showDiv}>
+        <div class="speedDiv">
+            {Message}
+        </div>
+    </template>
+</template>

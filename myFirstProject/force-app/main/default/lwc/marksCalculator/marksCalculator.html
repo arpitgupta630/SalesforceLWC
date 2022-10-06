@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-var-p-around_medium lgc-bg">
+        <lightning-input type="text" label="Math Marks" class="math-marks" value="0"></lightning-input>
+    </div>
+
+    <div class="slds-var-p-around_medium lgc-bg">
+        <lightning-input type="text" label="Science Marks" class="science-marks" value="0"></lightning-input>
+    </div>
+
+    <lightning-button variant="brand" label="Show Result" title="Primary action" onclick={showResult} class="slds-var-m-right_x-small btn"></lightning-button>
+    
+    <template if:true={showDiv}>
+        <div>
+            {Message}
+        </div>
+    </template>
+</template>

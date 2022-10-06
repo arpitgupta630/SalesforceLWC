@@ -1,0 +1,20 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    
+    <div class="slds-grid slds-wrap">
+        <template for:each={recentRecords} for:item="acc">
+            <div key={acc.Id}  class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small">
+                <lightning-card  variant="Narrow"  title={acc.Name} icon-name="standard:account">
+                    <div class="slds-var-p-horizontal_small">
+                        <p><strong>Account Name:</strong> {acc.Name}</p>
+                        <p><strong>Number of Employees:</strong> {acc.NumberOfEmployees}</p>
+                        <p><strong>Annual Revenue:</strong> {acc.AnnualRevenue}</p>
+                        <p><strong>Rating:</strong> {acc.Rating}</p>
+                    </div>
+                    <p slot="footer">Card Footer</p>
+                </lightning-card>
+            </div>
+        </template>
+    </div>
+
+</template>
