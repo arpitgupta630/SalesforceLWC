@@ -16,7 +16,7 @@ public with sharing class CreateAccountRecordLWC_UI {
     public static List<Account> getRecentAccount(){
         List<Account> recentAcc = [
             SELECT Name, NumberOfEmployees, AnnualRevenue, Rating FROM Account
-            ORDER BY createdDate DESC LIMIT 5
+            ORDER BY createdDate DESC LIMIT 4
         ];
         return recentAcc;
     }
