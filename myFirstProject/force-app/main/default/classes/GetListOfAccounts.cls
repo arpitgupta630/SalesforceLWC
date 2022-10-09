@@ -10,4 +10,19 @@ public class GetListOfAccounts {
         return accList;
     }
 
+    @AuraEnabled(cacheable = true)
+    public static List<Account> getAccountListForTable(){
+        
+        List<Account> accList = [
+            SELECT Id, Name, NumberOfEmployees, AnnualRevenue, Rating FROM Account
+        ];
+        return accList;
+    }
+
+    @AuraEnabled
+    public static void deleteSelectedAccounts(List<Account> accList){
+        
+        DELETE accList;
+    }
+
 }

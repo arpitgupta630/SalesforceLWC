@@ -1,0 +1,24 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="slds-card slds-var-p-around_medium">
+        <span title="Sample Datatable" class="slds-card__header-title">Accounts Tree Grid</span>
+        <lightning-tree-grid
+            key-field="id"
+            data={row} 
+            columns={columns}
+            expanded-rows={expandedRows}
+            onrowselection={handleSelection}
+            ontoggle={handleToggle}
+            onheaderaction={handleHeaderAction}
+        ></lightning-tree-grid>
+        <div class="slds-col slds-size_6-of-12 slds-var-p-top_large slds-align_absolute-center">
+            <lightning-button variant="brand" label="Get Expanded Rows" title="Get Expanded Rows" onclick={getExpandedRows} class="slds-var-m-right_x-small btn"></lightning-button>
+        </div>
+        <div class="slds-col slds-size_6-of-12 slds-var-p-top_large slds-align_absolute-center">
+            <lightning-button variant="brand" label="Expand All/ Collapse All" title="Expand All/ Collapse All" onclick={handleExpandCollapse} class="slds-var-m-right_x-small btn"></lightning-button>
+        </div>
+        <div class="slds-col slds-size_12-of-12 slds-var-p-top_large slds-align_absolute-center">
+            {getExpanded}
+        </div>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="slds-card slds-var-p-around_medium" style="height: 500px;">
+        <span title="Search Student by Course" class="slds-card__header-title">Search Student by Course</span>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small">
+                <lightning-input type="text" label="Find Course Student" data-id="course-opted" placeholder="Enter any Course"></lightning-input>
+            </div>
+            <div class="slds-col slds-size_6-of-12 slds-var-p-top_large slds-align_absolute-center">
+                <lightning-button variant="brand" label="Search Student" title="Primary action" onclick={searchStudent} class="slds-var-m-right_x-small btn"></lightning-button>                
+            </div>
+        </div>
+        <div style="height: 300px;" if:true={flag}>
+            <lightning-datatable 
+                key-field="id" 
+                data={studentList} 
+                columns={columns}
+                onrowselection={handleRowSelection} 
+                class="slds-var-p-around_medium">
+            </lightning-datatable>
+        </div>
+    </div>
+</template>
