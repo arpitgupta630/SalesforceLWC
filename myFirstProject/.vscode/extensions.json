@@ -4,6 +4,8 @@
     "redhat.vscode-xml",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "financialforce.lana"
+    "financialforce.lana",
+    "salesforce.salesforcedx-vscode-expanded",
+    "salesforce.salesforcedx-vscode-core"
   ]
 }

@@ -1,0 +1,63 @@
+<template>
+    <div class="slds-card slds-var-p-around_medium">
+        <lightning-card title="Conative Document" icon-name="action:new_note" class="slds-card__header-title"></lightning-card>
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_12-of-12 slds-var-p-around_medium slds-align_absolute-center">
+                <lightning-button variant="brand" label="Add New Document" title="Primary action" onclick={createRace} class="slds-var-m-right_x-small btn"></lightning-button>                
+            </div>
+            <lightning-accordion class="slds-col slds-size_12-of-12 slds-var-p-around_medium" onsectiontoggle={handleToggleSection}>
+                <template for:each={years} for:item="year">
+                    <lightning-accordion-section key={year} name={year} label={year}>
+                        <div class="slds-var-p-around_medium slds-align_absolute-center header-center">
+                            <lightning-datatable 
+                                key-field="id" 
+                                data={datedDocuments} 
+                                columns={columns}
+                                onsave={handleSave}
+                                onrowselection={handleRowSelection}
+                                onheaderaction={handleHeaderAction}
+                                onrowaction={editAction}
+                                hide-checkbox-column="true">
+                            </lightning-datatable>
+                        </div>
+                    </lightning-accordion-section>
+                </template>
+            </lightning-accordion>
+
+            <template if:true={isEdit}>
+                <section role = "dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <lightning-button-icon class="slds-modal__close" title="close" icon-name="utility:close" icon-class="slds-button_icon-inverse" onclick={handleDialogClose}></lightning-button-icon>
+                            <h2 class="slds-text-heading_medium slds-hyphenate header-string">
+                                Edit Record: Conative Document
+                            </h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <slot>
+                                <lightning-record-edit-form object-api-name="Conative_Document__c" record-id={recordId} onsuccess={handleSuccess}>
+                                    <div class="slds-grid slds-wrap">
+                                        <lightning-input-field field-name="Name" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_x-large slds-var-p-vertical_x-small acc-field"></lightning-input-field>
+                            
+                                        <lightning-input-field field-name="Valid_From__c" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_x-large slds-var-p-vertical_x-small acc-field"></lightning-input-field>
+                            
+                                        <lightning-input-field field-name="Valid_Till__c" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_x-large slds-var-p-vertical_x-small acc-field"></lightning-input-field>
+                            
+                                        <lightning-input-field field-name="Rating" class="slds-col slds-size_6-of-12 slds-var-p-horizontal_x-large slds-var-p-vertical_x-small acc-field"></lightning-input-field>
+                        
+                                        <div class="slds-col slds-size_12-of-12 slds-var-p-around_medium slds-align_absolute-center">
+                                            <lightning-button variant="brand" type="submit" label="Save" class="slds-var-p-horizontal_x-small"></lightning-button>
+                                            <lightning-button type="reset" label="Clear" class="slds-var-p-horizontal_x-small"></lightning-button> 
+                                        </div>
+                                    </div>
+                                </lightning-record-edit-form>
+                            </slot>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </div>
+    </div>
+</template>

@@ -1,10 +1,59 @@
 <!-- sldsValidatorIgnore -->
 <template>
     <div class="slds-card slds-var-p-around_medium">
-        <span title="Custom Data Import Wizard" class="slds-card__header-title">Custom Data Import Wizard</span>
+        <lightning-card title="Custom Data Import Wizard" icon-name="action:new_note" class="slds-card__header-title"></lightning-card>
         <div class="slds-grid slds-wrap">
-            
-        </div>
-            
+            <lightning-combobox
+                name="objectSelection"
+                label="Select an Object"
+                value=""
+                options={options}
+                onchange={handleChange}
+                class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium slds-align_absolute-center"
+                required
+            ></lightning-combobox>
+            <lightning-input type="file" name="file" label="Attachment" accept=".csv" onchange={handleUploadFinished} class="slds-col slds-size_6-of-12 slds-var-p-horizontal_medium slds-align_absolute-center"></lightning-input>
+            <div class="slds-grid slds-wrap slds-size_12-of-12 slds-var-p-horizontal_medium">
+                <template for:each={allFields} for:item="field">
+                    <div 
+                        key={field}
+                        class="slds-col slds-size_3-of-12 slds-var-p-around_large slds-align_absolute-center"
+                        draggable="true"
+                        ondragstart={handleDragStart}
+                        data-item={field}>{field}
+                     </div>
+                </template>
+            </div>
+
+            <template if:true={showTable}>
+                <div class="slds-grid slds-wrap slds-col slds-size_12-of-12 slds-var-p-vertical_large">
+                
+                    <span title="Object Field Mapping" class="slds-card__header-title slds-align_absolute-center slds-col slds-size_12-of-12 slds-var-p-vertical_large">Obejct Field Mapping</span>
+                    <table border="1px" class="slds-col slds-size_12-of-12 slds-var-p-vertical_large">
+                        <thead class="slds-size_12-of-12">
+                            <tr style="height : 50px">
+                                <th style="text-align: center;">CSV File Headers</th>
+                                <th style="text-align: center;">Object Fields</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody class="slds-size_12-of-12">
+                            <template for:each={columnHeader} for:item="head">
+                                <tr key={head} style="height : 50px">
+                                    <td class="slds-size_6-of-12" scope="col" style="text-align: center;" data-id='csv-field'>{head}</td>
+                                    <td class="slds-size_6-of-12" style="text-align: center; width: 100%" ondragover={handleDragover} ondrop={handleDrop} data-id='obj-field'></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-var-p-around_medium slds-align_absolute-center">
+                    <lightning-button variant="brand" label="Insert Record" title="Primary action" onclick={insertRecord} class="slds-var-m-right_x-small slds-size_6-of-12"></lightning-button>
+                    <div if:true={btnFlag}>   
+                        <lightning-button variant="brand-outline" label="Download Success Report" title="Primary action" onclick={getSuccessReport} class="slds-var-m-right_x-small slds-size_6-of-12"></lightning-button>
+                    </div>            
+                </div>
+            </template>
+        </div> 
     </div>
 </template>

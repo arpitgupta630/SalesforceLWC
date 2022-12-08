@@ -1,0 +1,49 @@
+<template>
+    <div class="slds-card slds-var-p-around_medium">
+        
+        <lightning-card title="Preakness Sports Federations" icon-name="action:new_note" class="slds-card__header-title"></lightning-card>
+        
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_4-of-12 slds-var-p-around_medium slds-align_absolute-center">
+                <lightning-button variant="brand" label="Create New Race" title="Primary action" onclick={createRace} class="slds-var-m-right_x-small btn"></lightning-button>                
+            </div>
+
+            <div class="slds-col slds-size_4-of-12 slds-var-p-around_medium slds-align_absolute-center">
+                <lightning-button variant="brand" label="Create New Horse" title="Primary action" onclick={createHorse} class="slds-var-m-right_x-small btn"></lightning-button>                
+            </div>
+
+            <div class="slds-col slds-size_4-of-12 slds-var-p-around_medium slds-align_absolute-center">
+                <lightning-button variant="brand" label="Add Horse to Race" title="Primary action" onclick={horseToRace} class="slds-var-m-right_x-small btn"></lightning-button>                
+            </div>
+
+            <template if:true={isCreate}>
+                <section role = "dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <lightning-button-icon class="slds-modal__close" title="close" icon-name="utility:close" icon-class="slds-button_icon-inverse" onclick={handleDialogClose}></lightning-button-icon>
+                            <h2 class="slds-text-heading_medium slds-hyphenate header-string">
+                                Create New Race
+                            </h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <slot>
+                                <lightning-record-form object-api-name={objectName} fields={fields} onsuccess={handleSuccess} columns="2" class="slds-col slds-size_12-of-12 slds-var-p-horizontal_medium  slds-var-p-vertical_x-small"></lightning-record-form>
+                            </slot>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            
+            <template for:each={horses} for:item="horse">
+                <lightning-accordion key={horse.Id} class="slds-col slds-size_3-of-12 slds-var-p-around_medium" onsectiontoggle={handleToggleSection}>
+                    <lightning-accordion-section name={horse.id} label={horse.Name}>
+                        <p>Horse Detail 1</p>
+                        <p>Horse Detail 2</p>
+                        <p>Horse Detail 3</p>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </template>
+        </div>
+    </div>
+</template>
