@@ -8,6 +8,11 @@ export default class DocumentAccordion extends LightningElement {
     connectedCallback(){
         this.getDoc();
     }
+    // renderedCallback(){
+    //     let style = document.createElement("style");
+    //     style.innerText = "slds-th__action {display:flex !important; justify-content: center !important;}";
+    //     document.querySelector('lightning-datatable').appendChild(style);
+    // }
 
     getDoc(){
         getDocuments().then(result=>{
@@ -28,23 +33,23 @@ export default class DocumentAccordion extends LightningElement {
     }
     columns = [
         { 
-            label: 'Title', fieldName: 'Name', type : 'text', initialWidth: 175,
+            label: 'Title', fieldName: 'Name', type : 'text', initialWidth: 250,
             cellAttributes: { iconName: 'doctype:image', alignment: 'center' }
         },
         { 
-            label: 'Valid From', fieldName: 'Valid_From_Year__c', type: 'text', initialWidth: 175,
+            label: 'Valid From', fieldName: 'Valid_From_Year__c', type: 'text', initialWidth: 250,
             cellAttributes: { alignment: 'center' }
         },
         { 
-            label: 'Valid Till', fieldName: 'Valid_Till_Year__c', type: 'text', initialWidth: 175,
+            label: 'Valid Till', fieldName: 'Valid_Till_Year__c', type: 'text', initialWidth: 250,
             cellAttributes: { alignment: 'center' }
         },
         { 
-            label: 'Document Type', fieldName: 'Document_Type__c', type: 'text', initialWidth: 175,
+            label: 'Document Type', fieldName: 'Document_Type__c', type: 'text', initialWidth: 250,
             cellAttributes: { alignment: 'center' }
         },
         { 
-            label: 'Is Valid', fieldName: 'Is_Active__c', type: 'boolean', initialWidth: 175,
+            label: 'Is Valid', fieldName: 'Is_Active__c', type: 'boolean', initialWidth: 250,
             cellAttributes: { alignment: 'center' }
         },
         { 

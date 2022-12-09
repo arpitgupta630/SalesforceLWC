@@ -9,7 +9,7 @@
             <lightning-accordion class="slds-col slds-size_12-of-12 slds-var-p-around_medium" onsectiontoggle={handleToggleSection}>
                 <template for:each={years} for:item="year">
                     <lightning-accordion-section key={year} name={year} label={year}>
-                        <div class="slds-var-p-around_medium slds-align_absolute-center header-center">
+                        <div class="slds-var-p-around_medium slds-align_absolute-center">
                             <lightning-datatable 
                                 key-field="id" 
                                 data={datedDocuments} 
