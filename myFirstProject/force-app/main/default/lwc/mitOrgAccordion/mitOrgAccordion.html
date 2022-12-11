@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-card slds-var-p-around_medium">
+        <lightning-card title="MIT Organization" icon-name="action:new_note" class="slds-card__header-title"></lightning-card>
+    
+        <div class="slds-grid slds-wrap">
+            <lightning-accordion class="slds-col slds-size_12-of-12 slds-var-p-around_medium" onsectiontoggle={handleToggleSection}>
+                <template for:each={allData} for:item="data">
+                    <button key={data.Id} onclick={deleteRecord} data-id={data.Id} class="slds-button slds-button_outline-brand my-btn"> Delete</button>
+                    <button key={data.Id} onclick={editAccount} data-id={data.Id} class="slds-button slds-button_outline-brand my-btn"> Edit</button>
+                    <lightning-accordion-section key={data.Id} name={data.Id} label={data.Name}>
+                        <lightning-accordion class="slds-col slds-size_12-of-12 slds-var-p-around_medium" onsectiontoggle={handleToggleSection}>
+                            <lightning-accordion-section name={data.Id} label='Conact'>
+                                <template for:each={data.Contacts} for:item="contact">
+                                    <article class="slds-card" key={contact.Id}>
+                                        <div class="slds-card__header slds-grid">
+                                            <div class="slds-media__body">
+                                                <p class="slds-card__body slds-card__body_inner">{contact.Name}</p>
+                                            </div>
+                                            <div class="slds-no-flex">
+                                                <lightning-button variant="neutral" label="Delete" title="Delete Contact" onclick={deleteRecord} data-id={contact.Id}></lightning-button>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </template>
+                            </lightning-accordion-section>
+                            <lightning-accordion-section name={data.Id} label='Opportunity'>
+                                <template for:each={data.Opportunities} for:item="opportunity">
+                                    <article class="slds-card" key={opportunity.Id}>
+                                        <div class="slds-card__header slds-grid">
+                                            <div class="slds-media__body">
+                                                <p class="slds-card__body slds-card__body_inner">{opportunity.Name}</p>
+                                            </div>
+                                            <div class="slds-no-flex">
+                                                <lightning-button variant="neutral" label="Delete" title="Delete Opportunity" onclick={deleteRecord} data-id={opportunity.Id}></lightning-button>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </template>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </lightning-accordion-section>                    
+                </template>
+            </lightning-accordion>
+        </div>
+    </div>
+</template>
