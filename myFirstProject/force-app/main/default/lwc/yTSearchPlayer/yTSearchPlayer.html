@@ -8,7 +8,7 @@
         <div class="slds-p-around_medium lgc-bg">
             <div style="display:flex; align-content:center; justify-content:center;">
                 <div style="width:50%;">
-                    <lightning-input type="text" placeholder="Type Here..." value={searchInput} onchange={handleSearch}></lightning-input>
+                    <lightning-input type="text" placeholder="Type Here..." value={searchInput} onchange={handleSearch} onkeypress={handleEnter}></lightning-input>
                 </div>
                 <p style="width:10%;"></p>
                 <div style="width:20%; padding-top: 19px;">
@@ -23,41 +23,63 @@
             <div>
                 <article class="slds-card" style="margin: 5px;">
                     <div class="slds-card__body slds-card__body_inner" style="display:flex; align-content:center; justify-content:center;padding: 0px; margin: 3px;">
-                        <iframe style="height:750px; width:80%; border-radius:2px;" allowfullscreen src={viewUrl}></iframe>
+                        <iframe data-id={viewUrl} style="height:750px; width:80%; border-radius:2px;" allowfullscreen src={viewUrl}></iframe>
                     </div>
                 </article>
             </div>
         </template>
         <div class="slds-border_left">
             <div style="height: 600px; width:auto" class="slds-scrollable_y">
-                <template for:each={videoResults} for:item="item">
-                    <span key={item.id}>
-                        <div class="slds-box">
-                            <article class="slds-card" style="margin: 5px;">
-                                <div class="slds-card__header slds-grid">
-                                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
-                                        <div class="slds-media__figure">
-                                            <a onclick={watchVideo} class="slds-card__header-link" data-id={item.videoId}>
-                                                <img style="width: 300px;height: 150px;border-radius: 9px;" src={item.thumbnails}/>
-                                            </a>
-                                        </div>
-                                        <div class="slds-media__body">
-                                            <h2 class="slds-card__header-title">
+                <template if:true={videoList}>
+                    <template for:each={videoResults} for:item="item">
+                        <div key={item.id}>
+                            <div class="slds-box">
+                                <article class="slds-card" style="margin: 5px;">
+                                    <div class="slds-card__header slds-grid">
+                                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                            <div class="slds-media__figure">
                                                 <a onclick={watchVideo} class="slds-card__header-link" data-id={item.videoId}>
-                                                    <span>{item.title}</span>
+                                                    <img style="width: 300px;height: 150px;border-radius: 9px;" src={item.thumbnails}/>
                                                 </a>
-                                            </h2>
-                                            <br><br>
-                                            <span style="font-weight: bold;">By: {item.channelTitle}</span>     
-                                            <br><br>
-                                            <span>{item.description}</span>
-                                        </div>
-                                    </header>
-                                </div>
-                            </article>
+                                            </div>
+                                            <div class="slds-media__body">
+                                                <h2 class="slds-card__header-title">
+                                                    <a onclick={watchVideo} class="slds-card__header-link" data-id={item.videoId}>
+                                                        <span>{item.title}</span>
+                                                    </a>
+                                                </h2>
+                                                <br><br>
+                                                <span style="font-weight: bold;">By: {item.channelTitle}</span>     
+                                                <br><br>
+                                                <span>{item.description}</span>
+                                            </div>
+                                        </header>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
-                    </span>
-                </template>    
+                    </template>    
+                </template>
+            </div>
+            <lightning-layout style="height: 50px !important; margin-top: 20px !important;">
+                <lightning-layout-item>
+                    <lightning-button variant="brand" label="Previous" icon-name="utility:chevronleft" onclick={handlePrevious} disabled={disablePreviousBtn}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="grow">
+                    <div style="display:flex; align-content:center; justify-content:center; ">
+                        <template for:each={allVideos} for:item="arr" for:index="index">
+                            <span key={arr.Id} style="width: 5%;">
+                                <button data-id={index} onclick={handleChange} class="slds-button slds-button_outline-brand">{arr.index}</button>
+                            </span>
+                        </template>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <lightning-button variant="brand" label="Next" icon-name="utility:chevronright" icon-position="right" onclick={handleNext} disabled={disableNextBtn}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+            <div style="display:flex; align-content:center; justify-content:center; height: 50px; margin-top: 20px;">
+                <strong>Diplaying {currentDisplayPage} of {totalPage}</strong>
             </div>
         </div>        
     </lightning-card>

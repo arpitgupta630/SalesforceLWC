@@ -11,7 +11,7 @@ public class YTController {
         Httpresponse res = null;
         String endpoint  = SEARCH_URL +
         '?part=snippet' +
-        '&maxResults=20' +
+        '&maxResults=100' +
         '&type=video' +
         '&q=' + EncodingUtil.urlEncode(searchKey, 'UTF-8') +
         '&key=' + API_KEY;
