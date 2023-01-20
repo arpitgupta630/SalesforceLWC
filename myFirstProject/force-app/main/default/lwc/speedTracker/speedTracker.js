@@ -6,9 +6,9 @@ export default class SpeedTracker extends LightningElement {
     showDiv = false;
     showResult(event){
         
-        var speed = Number(this.template.querySelector(".speed").value);
-        var speedDiv = this.template.querySelector(".speedDiv");
         this.showDiv = true;
+        let speed = Number(this.template.querySelector(".speed").value);
+        let speedDiv = this.template.querySelector(".speedDiv");
         if(speed>0 && speed<40){
             this.Message = "Normal";
             speedDiv.style.backgroundColor = "green";

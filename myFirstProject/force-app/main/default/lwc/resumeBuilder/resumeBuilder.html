@@ -1,0 +1,29 @@
+<template>
+    <div class="slds-card slds-var-p-around_medium">
+        <lightning-card title="Resume Builder" icon-name="action:new_note" class="slds-card__header-title"></lightning-card>
+
+        <template if:false={hideHeader}>
+            <div style="border: 1px rgb(205, 205, 205) solid; border-radius: 10px; width:50%; height:7.5rem; margin: 20px auto;" class="slds-col slds-size_12-of-12 slds-align_absolute-center">
+                <div class="slds-grid slds-wrap slds-align_absolute-center">
+                    <h2 class="slds-card__header-title slds-col slds-size_12-of-12 slds-align_absolute-center" style="margin-bottom: 1.5rem;">Create Resume for:</h2><br>
+                    <div class="slds-card__header-title slds-col slds-size_6-of-12 slds-align_absolute-center" style="cursor: pointer;">
+                        <lightning-avatar src="/bad/image/url.jpg" fallback-icon-name="standard:avatar"  size="large" class="slds-m-right_small"></lightning-avatar>
+                        <h2 style="display: block;">Fresher</h2>
+                    </div>
+                    <div class="slds-card__header-title slds-col slds-size_6-of-12 slds-align_absolute-center" style="cursor: pointer;">
+                        <lightning-avatar src="/bad/image/url.jpg" fallback-icon-name="standard:person_account" size="large" class="slds-m-right_small"></lightning-avatar>
+                        <h2 style="display: block;">Experienced</h2>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={fresherResume}>
+            <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+                <lightning-progress-step label="Personal Information" value="1"></lightning-progress-step>
+                <lightning-progress-step label="Acadamics" value="2"></lightning-progress-step>
+                <lightning-progress-step label="Extras" value="3"></lightning-progress-step>
+            </lightning-progress-indicator>
+        </template>
+    </div>
+</template>

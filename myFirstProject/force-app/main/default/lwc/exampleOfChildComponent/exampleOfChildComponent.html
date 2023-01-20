@@ -1,6 +1,7 @@
 <template>
-    <h1>Hello from Child Component</h1>
+    <h1>Hello from Child Component {accountMsg}</h1>
     <template for:each={accountList} for:item="account">
         <li key={account}>{account}</li>
     </template>
+    <lightning-button onclick={click} label="click me">hello</lightning-button>
 </template>

@@ -22,6 +22,8 @@ export default class YTSearchPlayer extends LightningElement {
     }
 
     handleSubmit(){
+        this.currentPage = 0;
+        this.currentDisplayPage = 1;
         getVideos({searchKey:this.searchInput})
         .then ((results)=>{
             let videos = results;
