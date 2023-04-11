@@ -1,0 +1,21 @@
+<aura:component>
+    
+    <!-- Define Variable  -->
+    <aura:attribute name="wholeNumber" type="integer" access="public" default="0"/>
+    <aura:attribute name="percentage" type="integer" access="public" default="0"/>
+
+    <div class="slds-p-around_large">
+        <h1 class="headline">Aura Calculator Component</h1>
+        <div class="slds-p-around_medium">
+            <lightning:input type="number" name="inputNumber" label="Enter a Number" value="{!v.wholeNumber}"/>
+            <lightning:input type="number" name="inputPercentage" label="Enter Percentage" value="{!v.percentage}" formatter="percent-fixed"/>
+            <br/>
+            <p>Given Number: {!v.wholeNumber}</p>
+            <p>Given Percentage: {!v.percentage}</p>
+            <p>Evaluating: {!v.wholeNumber} x {!v.percentage} / 100</p>
+            <br/>
+            <!-- Lightning Component Expression Functions (Math Functions) -->
+            <p class="output">{!v.percentage}% of {!v.wholeNumber} is: {!div(mult(v.wholeNumber, v.percentage),100)}</p>
+        </div>
+    </div>
+</aura:component>	

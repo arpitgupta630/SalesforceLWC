@@ -100,6 +100,11 @@ export default class MitOrgAccordion extends NavigationMixin(LightningElement) {
             );
         });
     }
+
+    handleRowSelection(){
+
+    }
+    
     disconnectedCallback() {
         unsubscribe(this.subscription, response => {
             console.log('Unsubscribed Channel');

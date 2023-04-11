@@ -1,0 +1,12 @@
+.THIS {
+    background-color: #b2cfff;
+}
+
+.THIS .headline{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.THIS .output{
+    font-size: 1.5rem;
+}
