@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <h1 class="slds-p-around_medium" style="color:red">Hello from First Lightning Aura Component WITH INLINE CSS</h1>
+    <p>Welcome to my first Lightning Aura Component it will be fun to learn such a amazing technology</p>
+    <div class="slds-p-around_medium">
+        <h1 class="black-text">Hello from First Lightning Aura Component WITH SLDS + CSS COLOR</h1>
+        <p>Welcome to my first Lightning Aura Component it will be fun to learn such a amazing technology WITH SLDS</p>
+    </div>
+</aura:component>

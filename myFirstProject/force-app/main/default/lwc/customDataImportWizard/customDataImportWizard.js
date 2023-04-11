@@ -58,7 +58,7 @@ export default class CustomDataImportWizard extends LightningElement {
     lines;
     handleUploadFinished(event) {
         let csvFile = event.detail.files[0];
-
+        console.log('csvfile:',csvFile);
         let newPromise = new Promise((resolve, reject) => {
             var reader = new FileReader();
             reader.onload = function () {
@@ -67,7 +67,7 @@ export default class CustomDataImportWizard extends LightningElement {
             reader.readAsText(csvFile);
         }).then(result => {
                 this.csvString = result;
-                console.log(this.csvString);
+                console.log('csvString',this.csvString);
                 getCSVobject({ 
                     stringFile: this.csvString 
                 }).then(response => {
