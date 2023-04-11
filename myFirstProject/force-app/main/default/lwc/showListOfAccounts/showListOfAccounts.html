@@ -1,0 +1,8 @@
+<template>
+    <lightning-input type="text" label="Search Criteria" class="search-criteria" placeholder="Enter Text"></lightning-input>
+    <lightning-button variant="brand" label="Search" title="Primary action" onclick={searchResult} class="slds-var-m-right_x-small btn"></lightning-button>
+    <h2>List of Account</h2>
+    <template for:each={accountList.data} for:item="acc">
+        <li key={acc.Id}>{acc.Name}</li>
+    </template>
+</template>

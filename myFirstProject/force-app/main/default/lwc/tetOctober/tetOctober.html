@@ -1,0 +1,50 @@
+<template>
+    <div class="slds-card slds-var-p-around_medium">
+        <lightning-card title="Create/Insert Record via Ubuntu" icon-name="action:new_note" class="slds-card__header-title"></lightning-card>
+        <div class="slds-grid slds-wrap slds-var-m-right_large">
+            <lightning-combobox
+                name="objectSelection"
+                label="Select Object"
+                placeholder="Select an Object"
+                value=""
+                options={objects}
+                onchange={handleObjectChange}
+                class="slds-col slds-size_5-of-12 slds-var-m-horizontal_medium slds-align_absolute-center"
+                required>
+            </lightning-combobox>
+
+            <lightning-input type="number" label="Number of Records" data-id="total-record" placeholder="Enter Total Number of Records" class="slds-col slds-size_5-of-12 slds-var-m-horizontal_medium slds-align_absolute-center"></lightning-input>
+        </div>
+
+        <template if:true={showLayout}>
+            <div class="slds-grid slds-wrap slds-var-m-right_large">
+                <template for:each={fieldSets} for:item="field">
+                    <div key={field} class="slds-col slds-size_12-of-12">
+                        <lightning-combobox
+                            name="fieldSelection"
+                            label="Field"
+                            placeholder="Select a Field"
+                            value=""
+                            options={fields}
+                            onchange={handleFieldChange}
+                            class="slds-col slds-size_4-of-12 slds-var-m-horizontal_medium slds-align_absolute-center"
+                            required>
+                        </lightning-combobox>
+                    </div>
+                    <div key={field.value} class="slds-col slds-size_12-of-12">
+                        <lightning-combobox
+                            name="fieldSelection"
+                            label="Field"
+                            placeholder="Select a Field"
+                            value=""
+                            options={option}
+                            onchange={handleOptionChange}
+                            class="slds-col slds-size_4-of-12 slds-var-m-horizontal_medium slds-align_absolute-center"
+                            required>
+                        </lightning-combobox>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>
