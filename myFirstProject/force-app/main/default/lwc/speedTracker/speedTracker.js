@@ -4,9 +4,15 @@ export default class SpeedTracker extends LightningElement {
     
     Message = '';
     showDiv = false;
-    showResult(event){
-        
-        this.showDiv = true;
+
+    renderedCallback(){
+        console.log('In Rendered');
+        if(this.Message == ''){
+            this.changeValue();
+        }
+    }
+
+    changeValue(){
         let speed = Number(this.template.querySelector(".speed").value);
         let speedDiv = this.template.querySelector(".speedDiv");
         if(speed>0 && speed<40){
@@ -19,6 +25,17 @@ export default class SpeedTracker extends LightningElement {
             this.Message = "Very Fast";
             speedDiv.style.backgroundColor = "red";
         }
+    }
+
+    showResult(event){
+        
+        console.log('Hello');
+        
+        if(this.showDiv){
+            this.changeValue();
+        }
+        this.showDiv = true;
         
     }
+    
 }
